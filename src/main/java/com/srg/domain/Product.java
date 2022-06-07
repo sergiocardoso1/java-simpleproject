@@ -24,7 +24,7 @@ public class Product implements Serializable{
 	private Double price;
 	
 	@ManyToOne
-	@JoinColumn(name="category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
 
 	public Product() {

@@ -1,6 +1,7 @@
 package com.srg.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -24,7 +25,7 @@ public class ProductResource {
 	@Autowired
 	private ProductService service;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Product> find (@PathVariable Long id){
 		Product obj = service.findId(id);
 		return ResponseEntity.ok().body(obj);
@@ -40,6 +41,25 @@ public class ProductResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@Valid @RequestBody ProductDTO objDto, @PathVariable Long id) {
+		Product obj = service.fromDTO(objDto);
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Product>> findAll(){
+		List<Product> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
 	
 
 }
