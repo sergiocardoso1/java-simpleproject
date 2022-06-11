@@ -1,4 +1,4 @@
-package com.srg.resources;
+package com.srg.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -20,7 +20,7 @@ import com.srg.services.ProductService;
 
 @RestController
 @RequestMapping(value = "/products")
-public class ProductResource {
+public class ProductController {
 
 	@Autowired
 	private ProductService service;

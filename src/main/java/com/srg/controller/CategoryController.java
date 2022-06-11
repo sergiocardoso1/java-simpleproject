@@ -1,4 +1,4 @@
-package com.srg.resources;
+package com.srg.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -20,7 +20,7 @@ import com.srg.services.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
-public class CategoryResource {
+public class CategoryController {
 	
 	@Autowired
 	private CategoryService service;
